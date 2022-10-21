@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="white"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="App">
+<meta name="msapplication-TileImage" content="favicon.ico">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+
+
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="index_color.css">
+
+<link rel='stylesheet' href='addons/editor_code/lib/codemirror.css'>
+
+<link rel="stylesheet" href="fonts/fontawesome.css">
+<link rel="stylesheet" href="fonts/fa-brands.css">
+<link rel="stylesheet" href="fonts/fa-solid.css">
+
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.ico">
+<title>App</title>
+</head>
+<body id="body" class="ui-slide">
+<div id="container_header"></div>
+
+<div id="spinner" class="spinner"></div>
+
+<div id="state" class="state"></div>
+
+<div id="toast"></div>
+<div id="toast_confirm_overlay" class="toast_confirm_overlay no-slide"></div>
+<div id="toast_confirm" class="toast_confirm no-slide"></div>
+
+<div id="toasts"></div>
+
+<div id="popup_overlay" class="popup_overlay no-slide"></div>
+<div id="popup" class="no-slide"></div>
+
+<noscript><div class="overlay">Sorry, App/Interface needs JavaScript!</div></noscript>
+
+<div id="container" class="container"></div>
+
+
+<div id="templates" style="display: none">
+
+
+<div id="tmp_test">
+</div>
+
+<div id="tmp_button" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+      <button type="button" class="in btn btn-default">&#160;</button>
+  </div>
+</div>
+
+<div id="tmp_buttongroup" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <div class="btn-grp in"></div>
+  </div>
+</div>
+
+<button id="tmp_buttongroup_button" type="button" class="btn btn-default">&#160;</button>
+
+<div id="tmp_caption" class="frm-caption">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-8 caption"></div>
+</div>
+
+<div id="tmp_caption_error" class="caption_error"></div>
+
+<div id="tmp_card" class="row">
+  <div class="col">
+    <div class="card bg-light m-2">
+    <div class="header"></div>
+    <div class="body"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_card_changeable" class="row">
+  <div class="col">
+    <div class="card bg-light m-2">
+    <button type="button" class="header button"></button>
+    <div class="body"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_cardgroup" class="row">
+  <div class="col">
+    <div class="card group bg-light m-2">
+    <button type="button" class="header button"></button>
+    <div class="body"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_checkbox" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><label class="checkbox_container"><input class="frm-ctrl in move-left" type="checkbox" /><span class="checkbox"></span></label></div>
+</div>
+
+<div id="tmp_checkboxslider" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><label class="checkboxslider_container"><input class="frm-ctrl in move-left" type="checkbox"><span class="checkboxslider round"></span></label></div>
+</div>
+
+<div id="tmp_color" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="color" /></div>
+</div>
+
+<div id="tmp_colorpalette" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <div class="btn-grp">
+        <button type="button" class="btn btn-default btn-color" style="background: #FF0000;" title="Red">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #FF8000;" title="Orange">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #FFFF00;" title="Yellow">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #80FF00;" title="Chartreuse">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #00FF00;" title="Green">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #00FF80;" title="Spring Green">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #00FFFF;" title="Cyan">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #0080FF;" title="Azure">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #0000FF;" title="Blue">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #8000FF;" title="Violet">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #FF00FF;" title="Magenta">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #FF0080;" title="Rose">&#160;</button><button type="button" class="btn btn-default btn-color" style="background: #FFFFFF;" title="White">&#160;</button>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_colorpicker">
+  <div class="frm-grp">
+    <label class="col-sm-3 frm-lbl lbl"></label>
+    <div class="col-sm-8"><div class="no-slide colorpicker"></div></div>
+  </div>
+</div>
+
+<div id="tmp_colorslider">
+  <div class="frm-grp">
+    <label class="col-sm-3 frm-lbl lbl-r">Red</label>
+    <div class="col-sm-8"><input class="frm-ctrl in-r slider no-slide" type="range" step="1" min="0" max="255" /></div>
+  </div>
+  <div class="frm-grp">
+    <label class="col-sm-3 frm-lbl lbl-g">Green</label>
+    <div class="col-sm-8"><input class="frm-ctrl in-g slider no-slide" type="range" step="1" min="0" max="255" /></div>
+  </div>
+  <div class="frm-grp">
+    <label class="col-sm-3 frm-lbl lbl-b">Blue</label>
+    <div class="col-sm-8"><input class="frm-ctrl in-b slider no-slide" type="range" step="1" min="0" max="255" /></div>
+  </div>
+</div>
+
+<div id="tmp_confirm" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+      <button type="button" class="in btn btn-default">&#160;</button>
+  </div>
+</div>
+
+<form id="tmp_content" class="frm-h"></form>
+
+<form id="tmp_content_header" class="frm-h"></form>
+
+<form id="tmp_content_header_fix" class="frm-h header_fix"></form>
+
+<form id="tmp_content_footer" class="frm-h"></form>
+
+<form id="tmp_content_footer_fix" class="frm-h footer_fix"></form>
+
+<div id="tmp_date" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="date" /></div>
+</div>
+
+<div id="tmp_editor" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><textarea class="frm-ctrl in no-slide editor" rows="4"></textarea></div>
+</div>
+
+<div id="tmp_editor_code" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><textarea class="frm-ctrl in no-slide editor_code" rows="4"></textarea></div>
+</div>
+
+<div id="tmp_email" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="email" /></div>
+</div>
+
+<fieldset id="tmp_fieldset" class="fieldset">
+  <legend class="header"></legend>
+  <div class="body"></div>
+</fieldset>
+
+<fieldset id="tmp_fieldset_changeable" class="fieldset">
+  <legend><button type="button" class="header"></button></legend>
+  <div class="body"></div>
+</fieldset>
+
+<fieldset id="tmp_fieldsetgroup" class="fieldset">
+  <legend><button type="button" class="header"></button></legend>
+  <div class="body"></div>
+</fieldset>
+
+<div id="tmp_file" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in" type="file" /></div>
+</div>
+
+<div id="tmp_group">
+    <div class="body"></div>
+</div>
+
+<div id="tmp_group_container" class="row">
+  <div class="col">
+    <div class="card bg-light m-2">
+    <div class="header header_container"></div>
+    <div class="bodys"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_group_container_changeable" class="row">
+  <div class="col">
+    <div class="card bg-light m-2">
+    <button type="button" class="header header_container button"></button>
+    <div class="bodys"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_header">
+  <header id="container_menu" class="m-fixed m-top"><input type="checkbox" class="m-cb" id="m-cb"><ul id="menu" class="m-m m-m-right pages"><li class="m-header"><a id="header"></a><label class="m-burger m-burger-dblspin" for="m-cb"><span></span></label></li></ul></header>
+</div>
+
+<div id="tmp_hidden">
+  <input class="in" type="hidden" />
+</div>
+
+<div id="tmp_html" class="frm-grp"></div>
+
+<div id="tmp_icon" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8 in"></div>
+</div>
+
+<i id="tmp_icon_inline" class="icon"></i>
+
+<i id="tmp_icon_inline_font" class="icon_font"></i>
+
+<img id="tmp_icon_inline_file" class="icon" src="" alt="">
+
+<div id="tmp_iframe" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><iframe class="in iframe no-slide"></iframe></div>
+</div>
+
+<div id="tmp_image" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><img class="in image" src="" alt=""></div>
+</div>
+
+<div id="tmp_label" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+</div>
+
+<div id="tmp_link" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <a class="in"></a>
+  </div>
+</div>
+
+<div id="tmp_linkbutton" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <a class="in btn btn-default">&#160;</a>
+  </div>
+</div>
+
+<div id="tmp_live" class="frm-grp"></div>
+
+<ul><li id="tmp_menu" class='m-item no-slide'><a></a></li></ul>
+
+<a id="tmp_menu_fix"></a>
+
+<div id="tmp_menu_select">
+  <select class="frm-ctrl in"></select>
+</div>
+
+<div id="tmp_menu_slider">
+  <input class="frm-ctrl in slider no-slide" type="range" step="1" min="0" max="255" />
+</div>
+
+<ul><li id="tmp_menu_tab" class='m-item m-fix'><a></a></li></ul>
+
+<div id="tmp_month" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="month" /></div>
+</div>
+
+<div id="tmp_nav" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-3">
+    <div class="btn-grp">
+      <button type="button" class="btn btn-default btn-prev" title="Previous"><</button> <button type="button" class="btn btn-default btn-next" title="Next">></button>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_number" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-2"><input class="frm-ctrl in" type="number" step="1" min="0" max="255" /></div>
+</div>
+
+<div id="tmp_numberslider" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-2"><input class="frm-ctrl in" type="number" step="1" min="0" max="255" /></div>
+  <div class="col-sm-6"><input class="frm-ctrl slider no-slide" type="range" step="1" min="0" max="255" /></div>
+</div>
+
+<div id="tmp_page" class="page">
+  <footer class="m-fixed m-bottom"><ul class="m-m m-m-center m-fix tabs"></ul></footer>
+</div>
+
+<div id="tmp_password" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="password" /></div>
+</div>
+
+<div id="tmp_passwordverify">
+  <div class="frm-grp">
+    <label class="col-sm-3 frm-lbl lbl"></label>
+    <div class="col-sm-8"><input class="frm-ctrl in-1 no-slide" type="password" /></div>
+  </div>
+  <div class="frm-grp">
+    <label class="col-sm-3"></label>
+    <div class="col-sm-8"><input class="frm-ctrl in-2 no-slide" type="password" /></div>
+  </div>
+</div>
+
+<div id="tmp_popup" class="popup no-slide">
+  <div class="header"><button type="button" class="btn-close"></button></div>
+  <div class="body frm-h"></div>
+</div>
+
+<div id="tmp_progress" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8 progress">
+    <div class="progress-bar in" style="width:0%"></div>
+  </div>
+</div>
+
+<div id="tmp_toast_confirm" class="toast no-slide">
+  <div class="header"></div>
+  <div class="body"><button type="button" class="in btn btn-default btn-ok">OK</button> <button type="button" class="in btn btn-default btn-abort">Abort</button></div>
+</div>
+
+<button id="tmp_toast_button" type="button" class="btn-close"></button>
+
+<div id="tmp_radio" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><fieldset class="frm-ctrl in"></fieldset></div>
+</div>
+
+<input id="tmp_radio_input" type="radio"></input>
+
+<label id="tmp_radio_label" class="radio_container"></label>
+
+<span id="tmp_radio_checkmark" class="radio_checkmark"></span>
+
+<div id="tmp_radiogroup" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <div class="btn-grp in radiogroup_container">
+    </div>
+  </div>
+</div>
+
+<input id="tmp_radiogroup_input" type="radio"></input>
+
+<label id="tmp_radiogroup_label" class="btn radiogroup_checkmark"></label>
+
+<div id="tmp_search" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="search" /></div>
+</div>
+
+<div id="tmp_section" class="frm-grp">
+  <div class="col-sm-12"><hr class="section" /></div>
+</div>
+
+<div id="tmp_select" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><select class="frm-ctrl in"></select></div>
+</div>
+
+<div id="tmp_selectlist" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><div class="selectlist"><select class="frm-ctrl in"></select></div></div>
+</div>
+
+<select><option id="tmp_select_option">-</option></select>
+
+<div id="tmp_selectbutton" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <select class="frm-ctrl in"></select>
+  </div>
+  <div class="col-sm-1">
+    <div class="btn-grp">
+      <button type="button" class="btn btn-default btn-prev" title="Previous"><</button> <button type="button" class="btn btn-default btn-next" title="Next">></button>
+    </div>
+  </div>
+</div>
+
+<div id="tmp_slider" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in slider no-slide" type="range" step="1" min="0" max="255" /></div>
+</div>
+
+<div id="tmp_slide" class="slide"><div class="header"></div><div class="body"></div></div>
+
+<div id="tmp_slide_container" class="slides">
+  <div class="bodys"></div>
+  <button type="button" class="btn-prev btn-header">❮</button>
+  <button type="button" class="btn-next btn-header">❯</button>
+  <button type="button" class="btn-prev btn-footer">❮</button>
+  <button type="button" class="btn-next btn-footer">❯</button>
+  <div class="footer footer_container"></div>
+</div>
+
+<span id="tmp_slide_status" class="slide_status"></span>
+
+<div id="tmp_space" class="space">
+</div>
+
+<div id="tmp_status" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8 in"></div>
+</div>
+
+<span id="tmp_status_label" class="status"></span> 
+
+<div id="tmp_switch" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+    <div class="btn-grp">
+      <button type="button" class="btn btn-default btn-on">On</button><button type="button" class="btn btn-default btn-off">Off</button>
+    </div>
+  </div>
+</div>
+
+<form id="tmp_tab" class="frm-h tab"></form>
+
+<div id="tmp_tabgroup_container" class="tabgroup">
+  <div class="header header_container"></div>
+  <ul class="nav"></ul>
+  <div class="bodys"></div>
+</div>
+
+<div id="tmp_tabgroup_container_changeable" class="tabgroup">
+  <button type="button" class="header header_container button"></button>
+  <ul class="nav"></ul>
+  <div class="bodys"></div>
+</div>
+
+<li id="tmp_tabgroup_nav"><button type="button" class="in"></button></li>
+
+<div id="tmp_tabgroup" class="body"></div>
+
+<div id="tmp_table" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><table class="table"><thead></thead><tbody></tbody><tfoot></tfoot></table></div>
+</div>
+
+<div id="tmp_tel" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="tel" /></div>
+</div>
+
+<div id="tmp_text" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="text" /></div>
+</div>
+
+<div id="tmp_textbutton" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="text" /></div>
+  <div class="col-sm-1"><button type="button" class="btn btn-default" title=""></button></div>
+</div>
+
+<div id="tmp_textarea" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><textarea class="frm-ctrl in no-slide" rows="4"></textarea></div>
+</div>
+
+<div id="tmp_time" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="time" /></div>
+</div>
+
+<div id="tmp_toasts" class="toast no-slide">
+  <div class="header"></div>
+  <div class="body"></div>
+</div>
+
+<div id="tmp_toast" class="toast no-slide">
+  <div class="header"></div>
+  <div class="body"></div>
+</div>
+
+<div id="tmp_toggle" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8">
+      <button type="button" class="in btn btn-default">&#160;</button>
+  </div>
+</div>
+
+<div id="tmp_txt" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8 in txt"></div>
+</div>
+
+<div id="tmp_url" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="url" /></div>
+</div>
+
+<div id="tmp_week" class="frm-grp">
+  <label class="col-sm-3 frm-lbl lbl"></label>
+  <div class="col-sm-8"><input class="frm-ctrl in no-slide" type="week" /></div>
+</div>
+
+<div id="tmp_wizard" class="wizard"><div class="header"></div><div class="body"></div></div>
+
+<div id="tmp_wizard_container" class="wizards">
+  <div class="bodys"></div>
+  <div class="nav"><button type="button" class="btn btn-secondary btn-prev">❮ Prev</button> <button type="button" class="btn btn-success btn-next">Next ❯</button> <button type="button" class="btn btn-success btn-submit">Save</button></div>
+  <div class="clear"></div>
+  <div class="footer footer_container"></div>
+</div>
+
+<span id="tmp_wizard_status" class="wizard_status"></span>
+
+
+</div>
+
+
+<script src="addons/addons.js"></script>
+
+<script src='addons/editor/tinymce.min.js'></script>
+
+<script src='addons/editor_code/lib/codemirror.js'></script>
+<script src='addons/editor_code/addon/edit/matchbrackets.js'></script>
+<script src='addons/editor_code/mode/htmlmixed/htmlmixed.js'></script>
+<script src='addons/editor_code/mode/xml/xml.js'></script>
+<script src='addons/editor_code/mode/javascript/javascript.js'></script>
+<script src='addons/editor_code/mode/css/css.js'></script>
+<script src='addons/editor_code/mode/clike/clike.js'></script>
+<script src='addons/editor_code/mode/php/php.js'></script>
+
+<script src="index.js"></script>
+
+
+</body>
+</html>

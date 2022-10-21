@@ -1,0 +1,54 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Could not find any user, exiting now.
+Konnte keinen Benutzer finden, wird jetzt beendet.
+
+Which user would you like to edit?
+Welchen Benutzer möchten Sie bearbeiten?
+
+Define the password for user
+Definieren Sie das Passwort für den Benutzer
+
+Do you want to edit another user?
+Möchten Sie einen weiteren Benutzer bearbeiten?
+
+New password
+Neues Passwort
+
+Retype new password
+Neues Passwort erneut eingeben
+
+No password has been supplied.
+Es wurde kein Passwort angegeben.
+
+Sorry, passwords do not match.
+Entschuldigung, die Passwörter stimmen nicht überein.
+
+Updating password
+Passwort aktualisieren
+
+Authentication token manipulation error
+Fehler bei der Manipulation des Authentifizierungstokens
+
+password unchanged
+Passwort unverändert
+
+user
+Benutzer
+
+does not exist
+existiert nicht

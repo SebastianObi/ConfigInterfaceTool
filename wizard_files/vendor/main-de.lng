@@ -1,0 +1,75 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Error, exiting now.
+Fehler, wird jetzt beendet.
+
+Error: You need to run this script as
+Fehler: Sie müssen dieses Skript ausführen als
+
+Error: This script can't be piped!
+Fehler: Dieses Skript kann nicht gepiped werden!
+
+failed!
+fehlgeschlagen!
+
+Finished!
+Beendet!
+
+Updating packet repository
+Aktualisiere die Paket-Quellen
+
+Updating system
+Aktualisiere das System
+
+Cleanup system
+Säubere das System
+
+Installing
+Installiere
+
+Updating
+Aktualisiere
+
+Expanding Filesystem
+Dateisystem erweitern
+
+Do you want to proceed?
+Möchten Sie fortfahren?
+
+Ok, proceeding...
+Ok, wir machen weiter...
+
+No, exiting now.
+Nein, wird jetzt beendet.
+
+Please answer yes or no.
+Bitte antworten Sie mit ja oder nein.
+
+Changing path
+Ändernder Pfad
+
+Downloading
+Herunterladen
+
+Changing file permissions/owner
+Ändern der Dateiberechtigungen/Besitzer
+
+Changing file permissions/right
+Ändern von Dateiberechtigungen/Rechte
+
+To activate the changes, the system must be rebooted.
+Um die Änderungen zu aktivieren, muss das System neu gestartet werden.

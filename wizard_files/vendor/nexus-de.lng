@@ -1,0 +1,102 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Checking Linux
+Überprüfung von Linux
+
+There is already an existing installation on your system.
+Es ist bereits eine Installation auf Ihrem System vorhanden.
+
+Do you want to replace it?
+Möchten Sie sie ersetzen?
+
+Ok, removing old installation
+Ok, alte Installation entfernen
+
+No, exiting now.
+Nein, wird jetzt beendet.
+
+Please answer yes or no.
+Bitte antworten Sie mit ja oder nein.
+
+Updating packet repository
+Aktualisiere die Paket-Quellen
+
+Updating system
+Aktualisiere das System
+
+Cleanup system
+Säubere das System
+
+Installing tools
+Installation von Werkzeugen
+
+Changing user permissions
+Ändern von Benutzerberechtigungen
+
+Configuring audio interface
+Konfigurieren der Audioschnittstelle
+
+Installing docker
+Installation von Docker
+
+Checking docker
+Prüfen von Docker
+
+Checking docker compose
+Prüfen von Docker Compose
+
+Entering folder
+Öffne Ordner
+
+Configuring git
+Git konfigurieren
+
+Which version do you want to use?
+Welche Version möchten Sie verwenden?
+
+Release (Recommended for production use)
+Normal (empfohlen für den Einsatz in der Produktion)
+
+Development
+Entwicklung
+
+Ok, downloading the latest release version.
+Ok, ich lade die neueste Version herunter.
+
+Ok, downloading the latest development version.
+Ok, ich lade die neueste Entwicklungsversion herunter.
+
+Downloading
+Herunterladen
+
+Creating environment variables
+Erstellen von Umgebungsvariablen
+
+Preparing for first start (test)
+Vorbereitungen für den ersten Start (Test)
+
+Waiting for first start (test)
+Warten auf den ersten Start (Test)
+
+This may take a while
+Dies kann eine Weile dauern
+
+Shutdown (test)
+Herunterfahren (Test)
+
+Deleting default configuration
+Löschen der Standardkonfiguration

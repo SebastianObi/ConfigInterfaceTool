@@ -1,0 +1,18 @@
+####nexus_service==True####
+[Unit]
+Description=NexusServer Daemon
+After=multi-user.target
+[Service]
+# If you run on WiFi devices,
+# or other devices that need some extra
+# time to initialise, you might want to
+# add a short delay:
+#ExecStartPre=/bin/sleep 10
+Type=simple
+Restart=always
+RestartSec=3
+User=root
+ExecStart=docker compose -f /root/nexus/docker-compose.yml up -d
+[Install]
+WantedBy=multi-user.target
+####

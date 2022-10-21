@@ -1,0 +1,2 @@
+### PUT_YOUR_WIZARD_SCRIPTS_HERE
+Scripts which are executed during the wizard actions are stored here. For an automatic assignment to the configurations, the file name (without extension) must be identical to the file name in the folder wizard_files.

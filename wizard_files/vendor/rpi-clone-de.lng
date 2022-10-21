@@ -1,0 +1,36 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Please connect the destination device (sd-card, usb-stick) you wish to use.
+Bitte schließen Sie das gewünschte Zielgerät (SD-Karte, USB-Stick) an.
+
+Hit enter when it is connected.
+Drücken Sie die Eingabetaste, wenn es angeschlossen ist.
+
+Could not find any devices, exiting now.
+Konnte keine Geräte finden, wird jetzt beendet.
+
+Could not find specified device, exiting now.
+Konnte das angegebene Gerät nicht finden, wird jetzt beendet.
+
+What is your destination device?
+Welches ist Ihr Zielgerät?
+
+Ok, using device:
+Ok, ich benutze das Gerät:
+
+WARNING: All data on the destination device will be deleted!
+WARNUNG: Alle Daten auf dem Zielgerät werden gelöscht!

@@ -1,0 +1,56 @@
+#source /etc/network/interfaces.d/*
+auto lo
+iface lo inet loopback
+
+
+####network_ap_power==True && network_wlan_power!=True####
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+address **network_ap_ip**/**network_ap_sn**
+####
+
+####network_ap_power!=True && network_wlan_power==True && network_wlan_dhcp_client!=True####
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+address **network_ap_ip**/**network_ap_sn**
+gateway **network_wlan_gw**
+####
+
+####network_ap_power!=True && network_wlan_power==True && network_wlan_dhcp_client!=True && network_wlan_dns==False####
+dns-nameservers **network_lan_dns1** **network_lan_dns2**
+####
+
+####network_ap_power!=True && network_wlan_power==True && network_wlan_dhcp_client!=True && network_wlan_dns!=False####
+dns-nameservers **network_lan_dns**
+####
+
+####network_ap_power!=True && network_wlan_power==True && network_wlan_dhcp_client==True####
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+####
+
+
+####network_lan_power==True && network_lan_dhcp_client!=True####
+auto eth0
+allow-hotplug eth0
+iface eth00 inet static
+address **network_lan_ip**/**network_lan_sn**
+gateway **network_lan_gw**
+####
+
+####network_lan_power==True && network_lan_dhcp_client!=True && network_lan_dns==False####
+dns-nameservers **network_lan_dns1** **network_lan_dns2**
+####
+
+####network_lan_power==True && network_lan_dhcp_client!=True && network_lan_dns!=False####
+dns-nameservers **network_lan_dns**
+####
+
+####network_lan_power==True && network_lan_dhcp_client==True####
+auto eth0
+allow-hotplug eth0
+iface eth0 inet dhcp
+####

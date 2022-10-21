@@ -1,0 +1,108 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Please connect the destination device you wish to use.
+Bitte schließen Sie das gewünschte Zielgerät an.
+
+Hit enter when it is connected.
+Drücken Sie die Eingabetaste, wenn es angeschlossen ist.
+
+Could not find any devices, exiting now.
+Konnte keine Geräte finden, wird jetzt beendet.
+
+Could not find specified device, exiting now.
+Konnte das angegebene Gerät nicht finden, wird jetzt beendet.
+
+What is your destination device?
+Welches ist Ihr Zielgerät?
+
+Ok, using device:
+Ok, ich benutze das Gerät:
+
+target is busy
+Ziel ist besetzt
+
+Creating image file
+Erstelle Abbild Datei
+
+Shrinking image file
+Verkleinere Abbild Datei
+
+copied
+kopiert
+
+records in
+Datensätze gelesen
+
+records out
+Datensätze geschrieben
+
+Gathering data
+Sammeln von Daten
+
+Creating new
+Erstellen neu
+
+Checking filesystem
+Überprüfung des Dateisystems
+
+non-contiguous
+nicht zusammenhängend
+
+blocks
+Blöcke
+
+Shrinking filesystem
+Verkleinern des Dateisystems
+
+Resizing the filesystem on
+Ändern der Größe des Dateisystems auf
+
+Begin pass
+Beginn des Durchgangs
+
+Relocating blocks
+Blöcke verlagern
+
+Scanning inode table
+Durchsuchen der Inode-Tabelle
+
+Updating inode references
+Aktualisieren von Inode-Referenzen
+
+The filesystem on
+Das Dateisystem auf
+
+is now
+ist jetzt
+
+blocks long
+Blöcke lang
+
+Shrinking image
+Verkleinere Abbild
+
+Using gzip on the shrunk image
+Verwendung von gzip für das Abbild
+
+Shrunk
+Verkleinert
+
+from
+von
+
+to
+zu

@@ -1,0 +1,3 @@
+### PUT_YOUR_INTERFACE_AND_CONFIG_DEFINITIONS_HERE
+This folder is used to configure the web interface and files. The processing takes place in alphabetical order. If a page is to be displayed higher up, the file name must be adjusted accordingly. All files must have the extension .cfg. Otherwise they will be ignored. All files are in INI format. There are different types of files which must be defined under main\type. These are:
+config=normal configuration for applications, content=pure content of the webinterface for display without further functions, service=definition of the service main page, software=definition of the service main page, wizard=definition of the main service page.

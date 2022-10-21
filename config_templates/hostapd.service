@@ -1,0 +1,21 @@
+####network_ap_power==True####
+[Unit]
+Description=Access point and authentication server for Wi-Fi and Ethernet
+Documentation=man:hostapd(8)
+After=network.target
+#Wants=wpa_supplicant@wlan0.service
+
+[Service]
+Type=forking
+PIDFile=/run/hostapd.pid
+Restart=on-failure
+RestartSec=2
+Environment=DAEMON_CONF=/etc/hostapd/hostapd.conf
+EnvironmentFile=-/etc/default/hostapd
+ExecStart=/usr/sbin/hostapd -B -P /run/hostapd.pid -B $DAEMON_OPTS ${DAEMON_CONF}
+ExecStartPre=/sbin/iw dev wlan0 interface add ap0 type __ap
+ExecStopPost=-/sbin/iw dev ap0 del
+
+[Install]
+WantedBy=multi-user.target
+####

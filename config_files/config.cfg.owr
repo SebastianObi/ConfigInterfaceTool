@@ -1,0 +1,10 @@
+# This is overwrite for the main "config.cfg" file.
+# You should probably edit it to suit your needs and use-case.
+
+
+#### Interface ####
+
+
+[interface_main]
+window = Notfunk Gateway
+header = Notfunk Gateway

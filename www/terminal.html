@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="white"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="App">
+<meta name="msapplication-TileImage" content="favicon.ico">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="index_color.css">
+<link rel="stylesheet" href="fonts/fontawesome.css">
+<link rel="stylesheet" href="fonts/fa-brands.css">
+<link rel="stylesheet" href="fonts/fa-solid.css">
+
+<!-- xterm -->
+<link rel="stylesheet" href="addons/terminal/xterm.css"/>
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="favicon.ico">
+<title>Terminal</title>
+</head>
+<body id="body" class="ui-slide" style="background-color:#000">
+
+
+<div id="container_header">
+  <header class="m-fixed m-top"><ul class="m-m m-fix"><li class="m-header m-fix"><a id="header"><i class="icon_font fas fa-terminal"></i><span id="menu_header">Terminal</span></a></li><li class="m-item m-fix"><a id="menu_status"></a></li><li class="m-item m-fix"><a id="menu_reload" onclick="location.reload();">Reload</a></li><li class="m-item m-fix"><a id="menu_exit" onclick="window.close();">Exit/Close</a></li></ul></header>
+</div>
+
+
+<div id="terminal" class="terminal"></div>
+
+
+<!-- xterm -->
+<script src="addons/terminal/xterm.js"></script>
+<script src="addons/terminal/xterm-addon-fit.js"></script>
+<script src="addons/terminal/xterm-addon-web-links.js"></script>
+<script src="addons/terminal/xterm-addon-search.js"></script>
+<script src="addons/terminal/socket.io.js"></script>
+
+<script>
+var cfg_main = {};
+
+cfg_main.version = "0.0.1";
+cfg_main.lng = "de"; //Language
+cfg_main.lng_auto = true;
+
+cfg_main.json = "json";
+cfg_main.json_uid = "uid";
+cfg_main.json_version = "version";
+cfg_main.json_lng = "lng";
+cfg_main.json_cmd = "cmd";
+cfg_main.json_config = "config";
+cfg_main.json_data = "data";
+cfg_main.json_result = "result";
+cfg_main.json_val_cfg = "get_config";
+cfg_main.json_val_input = "input";
+cfg_main.json_val_resize = "resize";
+cfg_main.json_val_exit = "exit";
+
+cfg_main.window = "Terminal"
+cfg_main.header = "Terminal"
+
+cfg_main.menu_status_connecting = "Connecting..."
+cfg_main.menu_status_connect = "Connected"
+cfg_main.menu_status_disconnect = "Disconnected"
+cfg_main.menu_reload = "Reload"
+cfg_main.menu_exit = "Exit/Close"
+
+cfg_main.msg_connect = "Welcome! Press enter to start!"
+cfg_main.msg_disconnect = "\r\n\r\nSession terminated!\r\nTo restart the session please reload the page!"
+
+
+if (cfg_main.lng_auto) cfg_main.lng = navigator.language || navigator.userLanguage || cfg_main.lng;
+cfg_main.lng = cfg_main.lng.split("-")[0];
+cfg_main.lng.toLowerCase();
+
+
+const socket = io.connect("/terminal");
+const menu_header = document.getElementById("menu_header");
+const menu_status = document.getElementById("menu_status");
+const menu_reload = document.getElementById("menu_reload");
+const menu_exit = document.getElementById("menu_exit");
+
+
+var cfg;
+var data;
+
+cfg = {};
+cfg.main = cfg_main;
+
+cfg_apply();
+
+data = {};
+data.con_cfg = false;
+
+
+const term = new Terminal({
+  cursorBlink: true,
+  macOptionIsMeta: true,
+  scrollback: 100,
+});
+
+
+const fit = new FitAddon.FitAddon();
+term.loadAddon(fit);
+term.loadAddon(new WebLinksAddon.WebLinksAddon());
+term.loadAddon(new SearchAddon.SearchAddon());
+
+
+term.open(document.getElementById("terminal"));
+fit.fit();
+term.onData((data) => {
+  json = {};
+  json[cfg.main.json_uid] = uid();
+  json[cfg.main.json_version] = cfg.main.version;
+  json[cfg.main.json_lng] = cfg.main.lng;
+  json[cfg.main.json_cmd] = cfg.main.json_val_input;
+  json[cfg.main.json_data] = data;
+  socket.emit(cfg.main.json, json);
+});
+
+
+socket.on("json", function (d) {
+  if (d[cfg.main.json_result]) {
+    if (d[cfg.main.json_result] == 1) {
+      if (d[cfg.main.json_config] && !data.con_cfg) cfg_process(d[cfg.main.json_config]);
+      if (d[cfg.main.json_data]) data_process(d[cfg.main.json_data]);
+      if (d[cfg.main.json_cmd]) {
+        if (d[cfg.main.json_cmd] == cfg.main.json_val_exit) {
+          socket.close(true);
+          term.write(cfg.main.msg_disconnect.replace(/\\r\\n/g, "\r\n"));
+        }
+      }
+    }
+  }
+});
+
+
+socket.on("connect", () => {
+  cfg_load();
+  fit_to_screen();
+  menu_status.innerHTML = cfg.main.menu_status_connect;
+  menu_status.className = "terminal-connected";
+});
+
+
+socket.on("disconnect", () => {
+  menu_status.innerHTML = cfg.main.menu_status_disconnect;
+  menu_status.className = "terminal-disconnected";
+});
+
+
+function cfg_load() {
+  json = {};
+  json[cfg.main.json_uid] = uid();
+  json[cfg.main.json_version] = cfg.main.version;
+  json[cfg.main.json_lng] = cfg.main.lng;
+  json[cfg.main.json_cmd] = cfg.main.json_val_cfg;
+  socket.emit(cfg.main.json, json);
+}
+
+
+function cfg_process(d) {
+  cfg = {};
+  cfg.main = cfg_main;
+
+  if (d.main) {
+    Object.keys(d.main).forEach(key => {
+      cfg.main[key] = d.main[key];
+    });
+  }
+
+  cfg_apply();
+
+  term.writeln(cfg.main.msg_connect.replace(/\\r\\n/g, "\r\n"));
+
+  data.con_cfg = true;
+}
+
+
+function cfg_apply() {
+  if (cfg.main.window) document.title = cfg.main.window;
+  if (cfg.main.header) menu_header.innerHTML = cfg.main.header;
+  if (cfg.main.class) document.body.className = cfg.main.class;
+  if (cfg.main.menu_reload) menu_reload.innerHTML = cfg.main.menu_reload;
+  if (cfg.main.menu_exit) menu_exit.innerHTML = cfg.main.menu_exit;
+  
+  if (menu_status.className == "terminal-connected") {
+    menu_status.innerHTML = cfg.main.menu_status_connect;
+  } else if (menu_status.className == "terminal-disconnected") {
+    menu_status.innerHTML = cfg.main.menu_status_disconnect;
+  } else {
+    menu_status.innerHTML = cfg.main.menu_status_connecting;
+  }
+}
+
+
+function data_process(d) {
+  term.write(d)
+}
+
+
+function fit_to_screen() {
+  fit.fit();
+  const dims = {cols: term.cols, rows: term.rows};
+  json = {};
+  json[cfg.main.json_uid] = uid();
+  json[cfg.main.json_version] = cfg.main.version;
+  json[cfg.main.json_lng] = cfg.main.lng;
+  json[cfg.main.json_cmd] = cfg.main.json_val_resize;
+  json[cfg.main.json_data] = dims;
+  socket.emit(cfg.main.json, json);
+}
+
+
+function debounce(func, wait_ms) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait_ms);
+  };
+}
+
+
+function uid() {
+  return "" + (Math.floor(Math.random() * Date.now()))
+}
+
+
+window.onresize = debounce(fit_to_screen, 50);
+</script>
+
+
+</body>
+</html>

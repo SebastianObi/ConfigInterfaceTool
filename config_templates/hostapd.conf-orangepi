@@ -1,0 +1,23 @@
+####network_ap_power==True && network_wlan_power!=True####
+interface=wlan0
+driver=nl80211
+ignore_broadcast_ssid=**network_ap_broadcast_ssid**
+ssid=**network_ap_ssid**
+country_code=**network_ap_country_code**
+ieee80211d=1
+hw_mode=**network_ap_hw_mode**
+channel=**network_ap_channel**
+max_num_sta=**network_ap_max_num_sta**
+beacon_int=**network_ap_beacon_int**
+disassoc_low_ack=**network_ap_disassoc_low_ack**
+ap_isolate=**network_ap_isolate**
+auth_algs=1
+####
+
+####network_ap_power==True && network_wlan_power!=True && network_ap_encryption!=0####
+wpa=**network_ap_encryption**
+wpa_passphrase=**network_ap_psk**
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+####

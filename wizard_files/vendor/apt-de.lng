@@ -1,0 +1,126 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Hit:
+Verarbeite: 
+
+Reading package lists
+Paketlisten lesen
+
+Building dependency tree
+Abhängigkeitsstruktur aufbauen
+
+Reading state information
+Lesen von Statusinformationen
+
+Reading database
+Datenbank lesen
+
+Calculating upgrade
+Berechnung des Upgrades
+
+Waiting for headers
+Warten auf Kopfzeilen
+
+Working
+Verarbeitung
+
+All packages are up to date
+Alle Pakete sind auf dem neuesten Stand
+
+Done
+Fertig
+
+The following packages were automatically installed and are no longer required
+Die folgenden Pakete wurden automatisch installiert und werden nicht mehr benötigt
+
+Use
+Verwenden Sie
+
+to remove them
+um sie zu entfernen
+
+upgraded
+aktualisiert
+
+newly installed
+neu installiert
+
+to remove and
+zu entfernen und
+
+not upgraded
+nicht aktualisiert
+
+Connected to
+Verbunden mit
+
+The following packages will be REMOVED
+Die folgenden Pakete werden ENTFERNT
+
+After this operation
+Nach dieser Operation
+
+disk space will be freed
+Speicherplatz wird freigegeben
+
+Do you want to continue?
+Möchten Sie fortfahren?
+
+Progress
+Verarbeite
+
+Removing
+Entfernen
+
+Processing triggers for
+Verarbeitung von Auslösern für
+
+The following packages will be upgraded
+Die folgenden Pakete werden aktualisiert
+
+Reading changelogs
+Änderungsprotokolle lesen
+
+Preconfiguring packages
+Pakete vorkonfigurieren
+
+Preparing to unpack
+Vorbereitungen zum Auspacken
+
+files and directories currently installed
+aktuell installierte Dateien und Verzeichnisse
+
+Unpacking
+Auspacken
+
+Setting up
+Einrichten
+
+over
+über
+
+Installing new version of config file
+Installation einer neuen Version der Konfigurationsdatei
+
+A new version
+Eine neue Version
+
+of configuration file
+der Konfigurationsdatei
+
+is available, but the version installed currently has been locally modified
+ist verfügbar, aber die derzeit installierte Version wurde lokal geändert

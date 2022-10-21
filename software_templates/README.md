@@ -1,0 +1,2 @@
+### PUT_YOUR_SOFTWARE_SCRIPTS_HERE
+Scripts which are executed during software actions are stored here. For an automatic assignment to the configurations, the file name (without extension) must be identical to the file name in the folder software_files.

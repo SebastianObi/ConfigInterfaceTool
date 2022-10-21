@@ -1,0 +1,69 @@
+##############################################################################################################
+#
+# Language/Translation file
+# English -> German
+#
+# FORMAT:
+# Search-Text
+# Replace-Text
+# 
+# Search-Text
+# Replace-Text
+# ...
+#
+##############################################################################################################
+
+
+Hello!
+Hallo!
+
+Hit enter to start.
+Drücken Sie zum Starten die Eingabetaste.
+
+Do you want to proceed?
+Möchten Sie fortfahren?
+
+Ok, proceeding
+Ok, weiter geht's
+
+No, exiting now.
+Nein, wird jetzt beendet.
+
+Cancel, exiting now.
+Abbruch, wird jetzt beendet.
+
+Please answer yes or no.
+Bitte antworten Sie mit ja oder nein.
+
+What option do you want to choose?
+Welche Option möchten Sie wählen?
+
+Ok, selected:
+Ok, ausgewählt:
+
+Error: That option does not exist, exiting now.
+Fehler: Diese Option existiert nicht, wird jetzt beendet.
+
+Enter username/text
+Benutzernamen/Text eingeben
+
+Ok, username/text
+Ok, Benutzername/Text
+
+Enter password
+Passwort eingeben
+
+Ok, password
+Ok, Passwort
+
+Finished!
+Beendet!
+
+failed!
+fehlgeschlagen!
+
+Checking
+Überprüfen 
+
+This is Group 
+Dies ist Gruppe
