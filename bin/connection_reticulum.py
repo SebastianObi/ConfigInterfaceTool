@@ -79,7 +79,5 @@ class connection_reticulum_class:
         self.path_redirect = path_redirect
 
 
-
-
     def __del__(self):
         return

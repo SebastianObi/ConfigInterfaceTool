@@ -252,7 +252,5 @@ class connection_webserver_aiohttp_class:
         self.app.on_response_prepare.append(self.handle_headers)
 
 
-
-
     def __del__(self):
         return

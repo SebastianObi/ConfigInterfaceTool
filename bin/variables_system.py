@@ -76,8 +76,6 @@ class variables_system_class:
     prefix = ""
 
 
-
-
     def convert_size_to_human_readable(self, size, decimal_places=3, source="B"):
         units = ['B','KB','MB','GB','TB']
         units_search = ['B','KB','MB','GB','TB']
@@ -95,8 +93,6 @@ class variables_system_class:
         return f"{size:.{decimal_places}f}{unit}"
 
 
-
-
     def cmd(self, cmd, default="", timeout=5):
         if cmd == "":
             return default
@@ -107,8 +103,6 @@ class variables_system_class:
         except:
             None
         return default
-
-
 
 
     def file(self, file, default=""):
@@ -122,8 +116,6 @@ class variables_system_class:
         except:
             None
         return default
-
-
 
 
     def build_config(self):
@@ -540,8 +532,6 @@ class variables_system_class:
         return True
 
 
-
-
     def add(self, config, sections):
         if sections == "": return False
 
@@ -562,8 +552,6 @@ class variables_system_class:
 
     def config_get(self):
         return True
-
-
 
 
     def data_get(self, receive_json, send_json):
@@ -608,12 +596,8 @@ class variables_system_class:
         return True
 
 
-
-
     def data_set(self, receive_json, send_json):
         return True
-
-
 
 
     def require(self, config):
@@ -644,19 +628,13 @@ class variables_system_class:
         return True
 
 
-
-
     def prefix_set(self, prefix):
         self.prefix = prefix
-
-
 
 
     def __init__(self, config=None):
         self.config = config
         return
-
-
 
 
     def __del__(self):

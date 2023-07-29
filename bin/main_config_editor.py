@@ -90,8 +90,6 @@ def config_edit(file, config):
     exit()
 
 
-
-
 ##############################################################################################################
 # Log
 
@@ -113,8 +111,6 @@ LOG_MAXSIZE       = 5*1024*1024
 LOG_PREFIX        = ""
 LOG_SUFFIX        = ""
 LOG_FILE          = ""
-
-
 
 
 def log(text, level=3, file=None):
@@ -176,8 +172,6 @@ def panic():
     sys.exit(255)
 
 
-
-
 #### Exit #####
 def exit():
     sys.exit(0)
@@ -202,8 +196,6 @@ def setup(path_log=None, loglevel=None, service=False):
         else:
             LOG_FILE = PATH
         LOG_FILE = LOG_FILE + "/" + NAME + ".log"
-
-
 
 
 #### Start ####
