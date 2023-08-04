@@ -265,7 +265,5 @@ class connection_webserver_gunicorn_class:
             self.app.add_url_rule('/', 'root', self.handle_root)
 
 
-
-
     def __del__(self):
         return

@@ -110,8 +110,6 @@ COPYRIGHT = "(c) 2022 Sebastian Obele  /  obele.eu"
 PATH = os.path.dirname(os.path.abspath(__file__)).rstrip("/bin")
 
 
-
-
 #### Global Variables - System (Not changeable) ####
 CONFIG = None
 CONFIG_AUTH = None
@@ -614,8 +612,6 @@ def process_upload(receive, file):
     return send
 
 
-
-
 def process_upload_auth(file):
     file_ext = file.rsplit('.', 1)[1].lower()
     if file_ext != CONFIG["config"]["extension_transfer"]: return False
@@ -687,8 +683,6 @@ def process_variable_merge(section="config_process"):
     return True
 
 
-
-
 def process_value_replace():
     global VARIABLES
     
@@ -701,8 +695,6 @@ def process_value_replace():
                     VARIABLES[key] = VARIABLES[key].replace(CONFIG_VARIABLES[key]["value_search"], CONFIG_VARIABLES[key]["value_replace"])
                     log(key + ": Replace: " + CONFIG_VARIABLES[key]["value_search"] + " -> " + CONFIG_VARIABLES[key]["value_replace"], LOG_DEBUG)
                     log(key + ": " + value + " -> " + VARIABLES[key], LOG_DEBUG)
-
-
 
 
 def process_value_regex():
@@ -719,8 +711,6 @@ def process_value_regex():
                     log(key + ": " + value + " -> " + VARIABLES[key], LOG_DEBUG)
 
 
-
-
 def process_value_regex_match(key, value):
     if CONFIG["config_process"].getboolean("value_regex_match"):
         if isinstance(CONFIG_VARIABLES[key]["value_regex_match"], str):
@@ -730,8 +720,6 @@ def process_value_regex_match(key, value):
                 else:
                     return False
     return True
-
-
 
 
 def process_value_convert():
@@ -749,8 +737,6 @@ def process_value_convert():
                     log(key + ": " + value + " -> " + VARIABLES[key], LOG_DEBUG)
 
 
-
-
 def process_variable(text):
     if CONFIG["config_process"].getboolean("variable") and CONFIG.has_option("config", "delimiter_variable"):
         if CONFIG["config"]["delimiter_variable"] != "":
@@ -761,8 +747,6 @@ def process_variable(text):
                 else:
                     text = text.replace(CONFIG["config"]["delimiter_variable"] + variables_key + CONFIG["config"]["delimiter_variable"], "")
     return text
-
-
 
 
 def process_variable_cmd(text, key="", value=""):
@@ -778,8 +762,6 @@ def process_variable_cmd(text, key="", value=""):
                 else:
                     text = text.replace(CONFIG["config"]["delimiter_variable_cmd"] + variables_key + CONFIG["config"]["delimiter_variable_cmd"], "")
     return text
-
-
 
 
 def process_if(text):
@@ -839,8 +821,6 @@ def process_if(text):
                         log("If error: " + e, LOG_ERROR)
                         continue
     return text
-
-
 
 
 def process_cleanup(text):
@@ -913,8 +893,6 @@ def process_config_get(receive_json, send_json):
         send_json["data"]["app_config_auto_data"] = ";".join(array)
 
     return True
-
-
 
 
 def process_config_set(receive_json, send_json):
@@ -1047,13 +1025,9 @@ def process_software_get(receive_json, send_json):
     return True
 
 
-
-
 def process_software_set(receive_json, send_json):
     log("Process Software SET", LOG_EXTREME)
     return True
-
-
 
 
 def process_software_require(config):
@@ -1578,8 +1552,6 @@ def process_wizard_get(receive_json, send_json):
         send_json["data_live"]["app_wizard_active_output"] = ""
 
     return True
-
-
 
 
 def process_wizard_set(receive_json, send_json):
@@ -2130,8 +2102,6 @@ def process_wizard_set(receive_json, send_json):
     return True
 
 
-
-
 def process_wizard_require(execute=True):
     if CONFIG["wizard_process"].getboolean("require_acknowledge"):
         if CONFIG_WIZARD.has_option("main", "require_acknowledge"):
@@ -2153,8 +2123,6 @@ def process_wizard_require(execute=True):
                 CONFIG_WIZARD["tmp"]["require_reload"] = "True"
         if execute and CONFIG_WIZARD["tmp"]["require_reload"] != "":
             VARIABLES_SESSION["require_reload"] = True
-
-
 
 
 def process_wizard_group(group, current="", lng_key=""):
@@ -2181,8 +2149,6 @@ def process_wizard_group(group, current="", lng_key=""):
     return ret
 
 
-
-
 def process_wizard_group_status(group, current, lng_key=""):
     if group == "" or current == "":
         return ""
@@ -2203,8 +2169,6 @@ def process_wizard_group_status(group, current, lng_key=""):
         else:
             ret = ret + "<span class='wizard_status'></span>"
     return ret
-
-
 
 
 def process_wizard_group_input(group, current, lng_key=""):
@@ -2264,8 +2228,6 @@ def process_require(config):
     return True
 
 
-
-
 def process_require_mode(config):
     global VARIABLES_SESSION
 
@@ -2298,8 +2260,6 @@ def execute(config, data):
         x = x.strip()
         if x == "any" or x == "all" or x in data: return True
     return False
-
-
 
 
 def execute_file(source, destination, file=None, type="text", permission=None, owner=None):
@@ -2382,8 +2342,6 @@ def execute_file(source, destination, file=None, type="text", permission=None, o
     return True
 
 
-
-
 def execute_file_env(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("env_write"): return True
 
@@ -2436,8 +2394,6 @@ def execute_file_env(source, destination, file=None):
     return True
 
 
-
-
 def execute_file_env_edit(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("env_write"): return True
 
@@ -2446,8 +2402,6 @@ def execute_file_env_edit(source, destination, file=None):
     if os.path.exists(destination): source = destination
 
     return execute_file_env(source, destination, file)
-
-
 
 
 def execute_file_ini(source, destination, file=None):
@@ -2515,8 +2469,6 @@ def execute_file_ini(source, destination, file=None):
     return True
 
 
-
-
 def execute_file_ini_edit(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("ini_write"): return True
 
@@ -2527,16 +2479,12 @@ def execute_file_ini_edit(source, destination, file=None):
     return execute_file_ini(source, destination, file)
 
 
-
-
 def execute_file_json(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("json_write"): return True
 
     if file == None: file = os.path.basename(source)
     #todo
     return True
-
-
 
 
 def execute_file_json_edit(source, destination, file=None):
@@ -2547,8 +2495,6 @@ def execute_file_json_edit(source, destination, file=None):
     if os.path.exists(destination): source = destination
 
     return execute_file_json(source, destination, file)
-
-
 
 
 def execute_file_keyarg(source, destination, file=None):
@@ -2603,8 +2549,6 @@ def execute_file_keyarg(source, destination, file=None):
     return True
 
 
-
-
 def execute_file_keyarg_edit(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("keyarg_write"): return True
 
@@ -2613,8 +2557,6 @@ def execute_file_keyarg_edit(source, destination, file=None):
     if os.path.exists(destination): source = destination
 
     return execute_file_keyarg(source, destination, file)
-
-
 
 
 def execute_file_keyval(source, destination, file=None):
@@ -2668,8 +2610,6 @@ def execute_file_keyval(source, destination, file=None):
     return True
 
 
-
-
 def execute_file_keyval_edit(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("keyval_write"): return True
 
@@ -2678,8 +2618,6 @@ def execute_file_keyval_edit(source, destination, file=None):
     if os.path.exists(destination): source = destination
 
     return execute_file_keyval(source, destination, file)
-
-
 
 
 def execute_file_raw(source, destination, file=None):
@@ -2699,8 +2637,6 @@ def execute_file_raw(source, destination, file=None):
     return True
 
 
-
-
 def execute_file_raw_edit(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("raw_write"): return True
 
@@ -2709,8 +2645,6 @@ def execute_file_raw_edit(source, destination, file=None):
     if os.path.exists(destination): source = destination
 
     return execute_file_raw(source, destination, file)
-
-
 
 
 def execute_file_text(source, destination):
@@ -2737,16 +2671,12 @@ def execute_file_text(source, destination):
     return True
 
 
-
-
 def execute_file_toml(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("toml_write"): return True
 
     if file == None: file = os.path.basename(source)
     #todo
     return True
-
-
 
 
 def execute_file_toml_edit(source, destination, file=None):
@@ -2759,16 +2689,12 @@ def execute_file_toml_edit(source, destination, file=None):
     return execute_file_toml(source, destination, file)
 
 
-
-
 def execute_file_xml(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("xml_write"): return True
 
     if file == None: file = os.path.basename(source)
     #todo
     return True
-
-
 
 
 def execute_file_xml_edit(source, destination, file=None):
@@ -2781,16 +2707,12 @@ def execute_file_xml_edit(source, destination, file=None):
     return execute_file_xml(source, destination, file)
 
 
-
-
 def execute_file_yaml(source, destination, file=None):
     if not CONFIG["config_process"].getboolean("yaml_write"): return True
 
     if file == None: file = os.path.basename(source)
     #todo
     return True
-
-
 
 
 def execute_file_yaml_edit(source, destination, file=None):
@@ -2801,8 +2723,6 @@ def execute_file_yaml_edit(source, destination, file=None):
     if os.path.exists(destination): source = destination
 
     return execute_file_yaml(source, destination, file)
-
-
 
 
 def execute_cmd(cmd):
@@ -2819,8 +2739,6 @@ def execute_cmd(cmd):
         except:
             return False
     return True
-
-
 
 
 def execute_script(script):
@@ -2926,15 +2844,11 @@ def build(option="setup", lng=""):
     return error
 
 
-
-
 def build_variables_regex(text):
     if CONFIG["config_process"].getboolean("variables_regex"):
         if CONFIG["config_process"]["variables_regex_search"] != "":
             text = re.sub(CONFIG["config_process"]["variables_regex_search"], CONFIG["config_process"]["variables_regex_replace"], text)
     return text
-
-
 
 
 def build_lng(lng):
@@ -2949,8 +2863,6 @@ def build_lng(lng):
         lng_delimiter = "";
         lng_key = "";
     return [lng_key, lng_delimiter]
-
-
 
 
 def build_files(path, extension, lng_key="", recursive=False):
@@ -3419,8 +3331,6 @@ def build_interface(lng=""):
     return error
 
 
-
-
 def build_interface_software(source, lng_key=""):
     error = []
 
@@ -3500,8 +3410,6 @@ def build_interface_software(source, lng_key=""):
     return dest
 
 
-
-
 def build_interface_software_replace(file, string, lng_key=""):
     delimiter = CONFIG["software"]["delimiter_variable"]
     for section in file.sections():
@@ -3513,8 +3421,6 @@ def build_interface_software_replace(file, string, lng_key=""):
         for (key, val) in file.items(section):
             string = string.replace(delimiter + key + delimiter, val)
     return string
-
-
 
 
 def build_interface_wizard(source, lng_key=""):
@@ -3599,8 +3505,6 @@ def build_interface_wizard(source, lng_key=""):
     return dest
 
 
-
-
 def build_interface_wizard_replace(file, string, lng_key=""):
     delimiter = CONFIG["wizard"]["delimiter_variable"]
     for section in file.sections():
@@ -3612,8 +3516,6 @@ def build_interface_wizard_replace(file, string, lng_key=""):
         for (key, val) in file.items(section):
             string = string.replace(delimiter + key + delimiter, val)
     return string
-
-
 
 
 def build_interface_content(source):
@@ -3781,8 +3683,6 @@ def build_sections(config, section):
             else:
                 return True
     return False
-
-
 
 
 def build_sections_detail(file_template, file_config, file_section, file_key, file_subkey, delimiter):
@@ -4089,8 +3989,6 @@ def user_get(file):
     exit()
 
 
-
-
 def user_delete(file, user):
     global CONFIG_AUTH
     if not CONFIG_AUTH:
@@ -4110,8 +4008,6 @@ def user_delete(file, user):
 
     print(text)
     exit()
-
-
 
 
 def user_set(file, user, password):
@@ -4186,8 +4082,6 @@ def data_read_file():
     return True
 
 
-
-
 def data_read_file_env(source, file, update=True):
     if not CONFIG["config_process"].getboolean("env_read"): return True
 
@@ -4244,8 +4138,6 @@ def data_read_file_env(source, file, update=True):
                     if group := re.search(r'^('+CONFIG_VARIABLES[key]["file_section"]+')=(.*)', text, flags=re.M):
                         VARIABLES_DATA[key] = group[2]
                         if VARIABLES_DATA[key].startswith('"') and VARIABLES_DATA[key].endswith('"'): VARIABLES_DATA[key] = VARIABLES_DATA[key].lstrip('"').rstrip('"')
-
-
 
 
 def data_read_file_ini(source, file, update=True):
@@ -4314,8 +4206,6 @@ def data_read_file_ini(source, file, update=True):
                                 VARIABLES_DATA[key] = config[CONFIG_VARIABLES[key]["file_section"]][CONFIG_VARIABLES[key]["file_key"]]
 
 
-
-
 def data_read_file_json(source, file, update=True):
     if not CONFIG["config_process"].getboolean("json_read"): return True
 
@@ -4342,8 +4232,6 @@ def data_read_file_json(source, file, update=True):
         return
 
     #todo
-
-
 
 
 def data_read_file_keyarg(source, file, update=True):
@@ -4404,8 +4292,6 @@ def data_read_file_keyarg(source, file, update=True):
                         if VARIABLES_DATA[key].startswith('"') and VARIABLES_DATA[key].endswith('"'): VARIABLES_DATA[key] = VARIABLES_DATA[key].lstrip('"').rstrip('"')
 
 
-
-
 def data_read_file_keyval(source, file, update=True):
     if not CONFIG["config_process"].getboolean("keyval_read"): return True
 
@@ -4463,8 +4349,6 @@ def data_read_file_keyval(source, file, update=True):
                         VARIABLES_DATA[key] = group[5]
 
 
-
-
 def data_read_file_raw(source, file, update=True):
     if not CONFIG["config_process"].getboolean("raw_read"): return True
 
@@ -4497,8 +4381,6 @@ def data_read_file_raw(source, file, update=True):
                 VARIABLES_DATA[key] = config
 
 
-
-
 def data_read_file_toml(source, file, update=True):
     if not CONFIG["config_process"].getboolean("toml_read"): return True
 
@@ -4518,8 +4400,6 @@ def data_read_file_toml(source, file, update=True):
         return
 
     #todo
-
-
 
 
 def data_read_file_xml(source, file, update=True):
@@ -4543,8 +4423,6 @@ def data_read_file_xml(source, file, update=True):
     #todo
 
 
-
-
 def data_read_file_yaml(source, file, update=True):
     if not CONFIG["config_process"].getboolean("yaml_read"): return True
 
@@ -4566,8 +4444,6 @@ def data_read_file_yaml(source, file, update=True):
     #todo
 
 
-
-
 def data_read():
     global VARIABLES_DATA
 
@@ -4585,8 +4461,6 @@ def data_read():
     return True
 
 
-
-
 def data_save():
     file = CONFIG["path"]["config"] + "/config_current." + CONFIG["config"]["extension"]
     try:
@@ -4595,8 +4469,6 @@ def data_save():
     except:
         return False
     return True
-
-
 
 
 def data_default():
@@ -4661,8 +4533,6 @@ def config_getoption(config, section, key, default=False, lng_key=""):
     return default
 
 
-
-
 #### Config - Read #####
 def config_read(file=None, file_override=None):
     global CONFIG
@@ -4688,8 +4558,6 @@ def config_read(file=None, file_override=None):
     return True
 
 
-
-
 #### Config - Save #####
 def config_save(file=None):
     global CONFIG
@@ -4706,8 +4574,6 @@ def config_save(file=None):
         else:
             return False
     return True
-
-
 
 
 #### Config - Default #####
@@ -4781,8 +4647,6 @@ def config_auth_read(file=None, file_override=None):
     return True
 
 
-
-
 #### Config Auth - Save #####
 def config_auth_save(file=None):
     global CONFIG_AUTH
@@ -4800,8 +4664,6 @@ def config_auth_save(file=None):
         else:
             return False
     return True
-
-
 
 
 #### Config Auth - Default #####
@@ -4831,8 +4693,6 @@ def config_auth_default(file=None, file_override=None):
     if not CONFIG_AUTH.has_section("main"): CONFIG_AUTH.add_section("main")
     CONFIG_AUTH["main"]["default_config"] = "True"
     return True
-
-
 
 
 #### Config Auth - External #####
@@ -4887,8 +4747,6 @@ LOG_MAXSIZE       = 5*1024*1024
 LOG_PREFIX        = ""
 LOG_SUFFIX        = ""
 LOG_FILE          = ""
-
-
 
 
 def log(text, level=3, file=None):
@@ -4950,8 +4808,6 @@ def panic():
     sys.exit(255)
 
 
-
-
 #### Exit #####
 def exit():
     sys.exit(0)
@@ -5008,8 +4864,6 @@ def setup(path=None, path_log=None, loglevel=None, service=False, mode_test=Fals
             VARIABLES_USER.prefix_set(CONFIG["config_process"]["variables_user_prefix"])
 
 
-
-
 #### Setup #####
 def setup_path():
     global CONFIG
@@ -5030,8 +4884,6 @@ def setup_path():
     if not CONFIG["path"]["auth_external"].startswith("/"): CONFIG["path"]["backup"] = PATH + "/" + CONFIG["path"]["auth_external"]
 
 
-
-
 #### Setup #####
 def setup_variables():
     global VARIABLES_SESSION
@@ -5048,8 +4900,6 @@ def setup_variables():
                     VARIABLES_SESSION[key] = data[key]
             except:
                 None
-
-
 
 
 #### Setup #####
@@ -5073,8 +4923,6 @@ def setup_log():
     log("     Version: " + VERSION, LOG_INFO)
     log("   Copyright: " + COPYRIGHT, LOG_INFO)
     log("...............................................................................", LOG_INFO)
-
-
 
 
 #### Setup #####
@@ -5127,8 +4975,6 @@ def setup_connection():
             webserver.register_upload_callback(process_upload)
             webserver.register_upload_auth_callback(process_upload_auth)
             webserver.start()
-
-
 
 
 #### Start ####
@@ -5282,8 +5128,6 @@ note =
 author = 
 
 
-
-
 #### Main ####
 
 [main]
@@ -5305,8 +5149,6 @@ mode_data = False #True=All / False=Used
 
 # Test mode
 mode_test = False
-
-
 
 
 #### Path ####
@@ -5348,8 +5190,6 @@ terminal = /tmp
 auth_external = /var/www/configinterfacetool.htpasswd
 
 
-
-
 #### Build ####
 [build]
 setup = variables_system;variables_user;software;variables_system_add;merge
@@ -5359,14 +5199,10 @@ data = merge
 data_user = merge
 
 
-
-
 #### Build add ####
 [build_add]
 system = version
 user = 
-
-
 
 
 #### Config ####
@@ -5513,11 +5349,7 @@ raw_add = True
 raw_raw = True
 
 
-
-
 [config_interface]
-
-
 
 
 #### Software ####
@@ -5597,8 +5429,6 @@ python_update_cmd_after =
 
 
 [software_interface]
-
-
 
 
 #### Wizard ####
@@ -5753,8 +5583,6 @@ class_error = bg-red
 class_finish = bg-green
 
 
-
-
 #### Connections ####
 [connection]
 enabled = True
@@ -5822,8 +5650,6 @@ enabled = False
 # Reticulum
 [connection_reticulum]
 enabled = False
-
-
 
 
 #### Interface ####
@@ -6270,8 +6096,6 @@ header_fix = c_header_fix
 footer = c_footer
 footer_fix = c_footer_fix
 '''
-
-
 
 
 DEFAULT_CONFIG_AUTH = '''

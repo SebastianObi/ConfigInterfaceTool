@@ -78,6 +78,15 @@ The full documentation is not yet available. Due to lack of time I can also not 
   - Manage services (Start/Stop/Enable/Disable)
   - Session management
   - Remote connection
+  - Backup/Restore of the whole tool
+  - Wizward status on the wizard overview page
+  - Wizard history
+  - Responsive menu on big screens
+  - Session management and display
+  - Text editor improvements
+  - Further settings of the Linux system
+  - Read and display groupings from config files
+  - Define complete wizard for editing config files
   - Documentation
 
 

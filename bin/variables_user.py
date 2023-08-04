@@ -73,8 +73,6 @@ class variables_user_class:
     prefix = ""
 
 
-
-
     def cmd(self, cmd, default="", timeout=5):
         if cmd == "":
             return default
@@ -85,8 +83,6 @@ class variables_user_class:
         except:
             None
         return default
-
-
 
 
     def file(self, file, default=""):
@@ -102,16 +98,12 @@ class variables_user_class:
         return default
 
 
-
-
     def build(self):
         self.data = defaultdict(dict)
 
         self.data["require"] = ""
 
         return True
-
-
 
 
     def add(self, config, sections):
@@ -131,12 +123,8 @@ class variables_user_class:
         return True
 
 
-
-
     def config_get(self):
         return True
-
-
 
 
     def data_get(self, receive_json, send_json):
@@ -151,12 +139,8 @@ class variables_user_class:
         return True
 
 
-
-
     def data_set(self, receive_json, send_json):
         return True
-
-
 
 
     def require(self, config):
@@ -187,19 +171,13 @@ class variables_user_class:
         return True
 
 
-
-
     def prefix_set(self, prefix):
         self.prefix = prefix
-
-
 
 
     def __init__(self, config=None):
         self.config = config
         return
-
-
 
 
     def __del__(self):

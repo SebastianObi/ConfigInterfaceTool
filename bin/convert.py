@@ -49,8 +49,6 @@ import crypt
 class convert_class:
 
 
-
-
     def size_to_human_readable(self, size, decimal_places=3, source="B"):
         size = int(size)
         units = ['B','KB','MB','GB','TB']
@@ -69,8 +67,6 @@ class convert_class:
         return f"{size:.{decimal_places}f}{unit}"
 
 
-
-
     def network_mask_to_cidr(self, mask):
         if mask == "": return ""
         try:
@@ -78,8 +74,6 @@ class convert_class:
         except:
             None
         return ""
-
-
 
 
     def network_cidr_to_mask(self, cidr):
@@ -97,8 +91,6 @@ class convert_class:
         return ""
 
 
-
-
     def string_to_bool(self, val):
         if val == "on" or val == "On" or val == "true" or val == "True" or val == "yes" or val == "Yes" or val == "1" or val == "open" or val == "opened" or val == "up":
             return "1"
@@ -110,12 +102,8 @@ class convert_class:
             return "0"
 
 
-
-
     def htpasswd(self, val):
         return crypt.crypt(val)
-
-
 
 
     def run(self, config, value):
@@ -139,12 +127,8 @@ class convert_class:
         return value
 
 
-
-
     def __init__(self):
         return
-
-
 
 
     def __del__(self):

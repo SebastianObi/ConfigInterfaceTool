@@ -97,8 +97,6 @@ COPYRIGHT = "(c) 2022 Sebastian Obele  /  obele.eu"
 PATH = os.path.dirname(os.path.abspath(__file__)).rstrip("/bin")
 
 
-
-
 #### Global Variables - System (Not changeable) ####
 CONFIG = None
 CONFIG_AUTH = None
@@ -129,21 +127,15 @@ def terminal_setup():
         socketio.start_background_task(target=terminal_output)
 
 
-
-
 def terminal_size(fd, rows, cols, xpix=0, ypix=0):
     if fd:
         size = struct.pack("HHHH", rows, cols, xpix, ypix)
         fcntl.ioctl(fd, termios.TIOCSWINSZ, size)
 
 
-
-
 def terminal_input(fd, data):
     if fd:
         os.write(fd, data.encode())
-
-
 
 
 def terminal_output():
@@ -190,14 +182,10 @@ def handle_auth(username, password):
     return False
 
 
-
-
 @app.route("/<path:filename>")
 @auth_handler.login_required
 def handle_files(filename):
     return send_from_directory(app.config["path_root"], filename)
-
-
 
 
 @auth_handler.login_required
@@ -205,12 +193,8 @@ def handle_root():
     return send_from_directory(app.config["path_root"], app.config["path_redirect_root"])
 
 
-
-
 def handle_not_found(data):
     return redirect(app.config["path_redirect_not_found"], code=302)
-
-
 
 
 @socketio.on("connect", namespace="/terminal")
@@ -218,8 +202,6 @@ def handle_not_found(data):
 def webserver_connect():
     terminal_setup()
     socketio.emit("json", {"version": VERSION, "result": "1"}, namespace="/terminal")
-
-
 
 
 @socketio.on("json", namespace="/terminal")
@@ -299,8 +281,6 @@ def user_get(file):
     exit()
 
 
-
-
 def user_delete(file, user):
     global CONFIG_AUTH
     if not CONFIG_AUTH:
@@ -320,8 +300,6 @@ def user_delete(file, user):
 
     print(text)
     exit()
-
-
 
 
 def user_set(file, user, password):
@@ -401,8 +379,6 @@ def config_getoption(config, section, key, default=False, lng_key=""):
     return default
 
 
-
-
 #### Config - Read #####
 def config_read(file=None):
     global CONFIG
@@ -423,8 +399,6 @@ def config_read(file=None):
     return True
 
 
-
-
 #### Config - Save #####
 def config_save(file=None):
     global CONFIG
@@ -441,8 +415,6 @@ def config_save(file=None):
         else:
             return False
     return True
-
-
 
 
 #### Config - Default #####
@@ -497,8 +469,6 @@ def config_auth_read(file=None):
     return True
 
 
-
-
 #### Config Auth - Save #####
 def config_auth_save(file=None):
     global CONFIG_AUTH
@@ -516,8 +486,6 @@ def config_auth_save(file=None):
         else:
             return False
     return True
-
-
 
 
 #### Config Auth - Default #####
@@ -547,8 +515,6 @@ def config_auth_default(file=None):
     if not CONFIG_AUTH.has_section("main"): CONFIG_AUTH.add_section("main")
     CONFIG_AUTH["main"]["default_config"] = "True"
     return True
-
-
 
 
 #### Config Auth - External #####
@@ -590,8 +556,6 @@ LOG_MAXSIZE       = 5*1024*1024
 LOG_PREFIX        = ""
 LOG_SUFFIX        = ""
 LOG_FILE          = ""
-
-
 
 
 def log(text, level=3, file=None):
@@ -693,8 +657,6 @@ def setup(path=None, path_log=None, loglevel=None, service=False, auth=None, aut
     app.config["auth"] = auth
 
 
-
-
 #### Setup #####
 def setup_log():
     log("...............................................................................", LOG_INFO)
@@ -704,8 +666,6 @@ def setup_log():
     log("     Version: " + VERSION, LOG_INFO)
     log("   Copyright: " + COPYRIGHT, LOG_INFO)
     log("...............................................................................", LOG_INFO)
-
-
 
 
 #### Setup #####
@@ -718,8 +678,6 @@ def setup_connection(host, port, path_root, path_redirect_root, path_redirect_no
     if path_redirect_not_found != "": app.register_error_handler(404, handle_not_found)
     if path_redirect_root != "": app.add_url_rule('/', 'root', handle_root)
     socketio.run(app, host=host, port=port)
-
-
 
 
 #### Start ####
@@ -779,8 +737,6 @@ def main():
 
 #### Default configuration file ####
 DEFAULT_CONFIG = ''''''
-
-
 
 
 DEFAULT_CONFIG_AUTH = '''
