@@ -108,7 +108,7 @@ _footer_next_steps
 PATH_CURRENT=$(dirname $(realpath $0))
 LOG_FILE="/tmp/${0##*/}-$(date +%Y%m%d-%H%M%S).log"
 DEPS_SYSTEM=("python3-pip")
-DEPS_PYTHON=(psutil)
+DEPS_PYTHON=("psutil")
 DEPS_FILE=("$PATH_CURRENT/bin/main.py")
 PERMISSION_OWNER=("$PATH_CURRENT/*")
 PERMISSION_RIGHTS=("$PATH_CURRENT/bin/main*.py" "$PATH_CURRENT/*.sh" "$PATH_CURRENT/service_templates/*.sh" "$PATH_CURRENT/software_templates/*.sh" "$PATH_CURRENT/wizard_templates/*.sh")

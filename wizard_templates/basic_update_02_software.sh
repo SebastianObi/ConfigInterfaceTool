@@ -20,30 +20,6 @@ LOG_FILE="/tmp/wizard.log"
 echo "" > "${LOG_FILE}"
 
 
-echo -ne "Updating Reticulum..."
-if ! pip3 install rns --upgrade >> "${LOG_FILE}" 2>&1; then
-  echo -e " ${RED}failed!${NC}"
-  exit 1
-fi
-echo -e " ${GREEN}OK!${NC}"
-
-
-echo -ne "Updating NomadNet..."
-if ! pip3 install nomadnet --upgrade >> "${LOG_FILE}" 2>&1; then
-  echo -e " ${RED}failed!${NC}"
-  exit 1
-fi
-echo -e " ${GREEN}OK!${NC}"
-
-
-echo -ne "Updating RNode Software..."
-if ! pip3 install rnodeconf --upgrade >> "${LOG_FILE}" 2>&1; then
-  echo -e " ${RED}failed!${NC}"
-  exit 1
-fi
-echo -e " ${GREEN}OK!${NC}"
-
-
 echo -e "Finished!"
 
 

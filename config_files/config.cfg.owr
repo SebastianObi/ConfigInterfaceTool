@@ -6,5 +6,5 @@
 
 
 [interface_main]
-window = Notfunk Gateway
-header = Notfunk Gateway
+window = Config Interface
+header = Config Interface

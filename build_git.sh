@@ -19,11 +19,20 @@ COMMENT_INIT="Initial commit"
 
 
 _prompt() {
+  echo -e "Origin: ${ORIGIN}"
+  echo -e "Branch: ${BRANCH}"
+  echo -e ""
   echo -e ""
   echo -e "Select an option:"
-  options=("Commit/Push" "Clear History" "Init" "Init (Pull only)" "Exit")
+  options=("Diff" "Pull" "Commit/Push" "Clear History" "Init" "Init (Pull only)" "Init (Push only)" "Exit")
   select opt in "${options[@]}"; do
     case $opt in
+    "Diff"*)
+      _diff
+      break;;
+    "Pull"*)
+      _pull
+      break;;
     "Commit/Push"*)
       _commit
       break;;
@@ -32,6 +41,9 @@ _prompt() {
       break;;
     "Init (Pull only)"*)
       _init_pull
+      break;;
+    "Init (Push only)"*)
+      _init_push
       break;;
     "Init"*)
       _init
@@ -56,6 +68,19 @@ _define_files() {
   for file in ${FILES_REMOVE[@]}; do
     git reset -- "${file}"
   done
+}
+
+
+_diff() {
+  git diff --numstat
+}
+
+
+_pull() {
+  echo -e ""
+  echo -e "Pull"
+
+  git pull origin "${BRANCH}"
 }
 
 
@@ -147,6 +172,28 @@ _init_pull() {
   git remote add origin "${ORIGIN}"
 
   git pull origin "${BRANCH}"
+
+  git push -f -u origin "${BRANCH}"
+}
+
+
+_init_push() {
+  echo -e ""
+  echo -e "Init (Push only)"
+
+  read VAR
+  if [ -z "${VAR}" ]; then
+    VAR="${COMMENT_INIT}"
+  fi
+
+  rm -rf .git
+
+  git init
+
+  _define_files
+
+  git branch -M "${BRANCH}"
+  git remote add origin "${ORIGIN}"
 
   git push -f -u origin "${BRANCH}"
 }
